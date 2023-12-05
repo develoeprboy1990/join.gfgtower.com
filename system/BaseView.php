@@ -592,7 +592,7 @@ class BaseView
 		if (!empty($this->page_title)) {
 			$title = $this->page_title;
 		} else {
-			$title = Router::$page_name;
+			$title = 'Gfgtower::'.Router::$page_name;
 		}
 		return $title;
 	}
