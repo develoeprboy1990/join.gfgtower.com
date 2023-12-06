@@ -52,66 +52,101 @@ class SharedController extends BaseController{
 		return $arr;
 	}
 
-	/**
-     * getcount_totalinquiries Model Action
-     * @return Value
-     */
-	function getcount_totalinquiries(){
-		$db = $this->GetModel();
-		$sqltext = "SELECT COUNT(*) AS num FROM inquiry";
-		$allowed_roles = array('administrator');
-		if (!in_array(strtolower(USER_ROLE), $allowed_roles)) {
+
+	 function getcount_totalinquiries()
+	 {
+ 
+		 $db = $this->GetModel();
+ 
+		 $sqltext = "SELECT COUNT(*) AS num FROM inquiry";
+		 $allowed_roles = array('administrator');
+		 if (!in_array(strtolower(USER_ROLE), $allowed_roles)) {
 			 $sqltext .= " WHERE inquiry.assign_agent_name= '" . get_active_user('agent_name') . "'";
 		 }
-
-		$queryparams = null;
-		$val = $db->rawQueryValue($sqltext, $queryparams);
-		
-		if(is_array($val)){
-			return $val[0];
-		}
-		return $val;
-	}
-
-	/**
-     * getcount_handled Model Action
-     * @return Value
-     */
-	function getcount_handled(){
-		$db = $this->GetModel();
-		$sqltext = "SELECT COUNT(*) AS num FROM inquiry where handled = 'true'";
-		$allowed_roles = array('administrator');
+ 
+		 $queryparams = null;
+ 
+		 $val = $db->rawQueryValue($sqltext, $queryparams);
+ 
+ 
+ 
+		 if (is_array($val)) {
+ 
+			 return $val[0];
+		 }
+ 
+		 return $val;
+	 }
+ 
+ 
+ 
+	 /**
+ 
+	  * getcount_handled Model Action
+ 
+	  * @return Value
+ 
+	  */
+ 
+	 function getcount_handled()
+	 {
+ 
+		 $db = $this->GetModel();
+ 
+		 $sqltext = "SELECT COUNT(*) AS num FROM inquiry where handled = 'true'";
+		 $allowed_roles = array('administrator');
 		 if (!in_array(strtolower(USER_ROLE), $allowed_roles)) {
 			 $sqltext .= " AND inquiry.assign_agent_name= '" . get_active_user('agent_name') . "'";
 		 }
-		$queryparams = null;
-		$val = $db->rawQueryValue($sqltext, $queryparams);
-		
-		if(is_array($val)){
-			return $val[0];
-		}
-		return $val;
-	}
-
-	/**
-     * getcount_pending Model Action
-     * @return Value
-     */
-	function getcount_pending(){
-		$db = $this->GetModel();
-		$sqltext = "SELECT COUNT(*) AS num FROM inquiry where handled != 'true'";
-		$allowed_roles = array('administrator');
+ 
+		 $queryparams = null;
+ 
+		 $val = $db->rawQueryValue($sqltext, $queryparams);
+ 
+ 
+ 
+		 if (is_array($val)) {
+ 
+			 return $val[0];
+		 }
+ 
+		 return $val;
+	 }
+ 
+ 
+ 
+	 /**
+ 
+	  * getcount_pending Model Action
+ 
+	  * @return Value
+ 
+	  */
+ 
+	 function getcount_pending()
+	 {
+ 
+		 $db = $this->GetModel();
+ 
+		 $sqltext = "SELECT COUNT(*) AS num FROM inquiry where handled != 'true'";
+		 $allowed_roles = array('administrator');
  
 		 if (!in_array(strtolower(USER_ROLE), $allowed_roles)) {
 			 $sqltext .= " AND inquiry.assign_agent_name= '" . get_active_user('agent_name') . "'";
 		 }
-		$queryparams = null;
-		$val = $db->rawQueryValue($sqltext, $queryparams);
-		
-		if(is_array($val)){
-			return $val[0];
-		}
-		return $val;
-	}
-
-}
+ 
+		 $queryparams = null;
+ 
+		 $val = $db->rawQueryValue($sqltext, $queryparams);
+ 
+ 
+ 
+		 if (is_array($val)) {
+ 
+			 return $val[0];
+		 }
+ 
+		 return $val;
+	 }
+ }
+ 
