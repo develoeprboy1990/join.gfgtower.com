@@ -34,7 +34,7 @@ $redirect_to = $this->redirect_to;
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="prospect_name">Prospect Name <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="prospect_name">Your Name <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
@@ -46,40 +46,11 @@ $redirect_to = $this->redirect_to;
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="prospect_phone">Prospect Phone <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="prospect_phone">Contact Number <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
                                                 <input id="ctrl-prospect_phone" value="<?php echo $this->set_field_value('prospect_phone', ""); ?>" type="text" placeholder="Enter Prospect Phone" required="" name="prospect_phone" class="form-control " />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="select_location">Select Location </label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="">
-                                                <select id="ctrl-select_location" name="select_location" placeholder="Select a value ..." class="custom-select">
-                                                    <option value="">Select a value ...</option>
-                                                    <?php
-                                                    $select_location_options = $comp_model->inquiry_select_location_option_list();
-                                                    if (!empty($select_location_options)) {
-                                                        foreach ($select_location_options as $option) {
-                                                            $value = (!empty($option['value']) ? $option['value'] : null);
-                                                            $label = (!empty($option['label']) ? $option['label'] : $value);
-                                                            $selected = $this->set_field_selected('select_location', $value, "");
-                                                    ?>
-                                                            <option <?php echo $selected; ?> value="<?php echo $value; ?>">
-                                                                <?php echo $label; ?>
-                                                            </option>
-                                                    <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -125,22 +96,6 @@ $redirect_to = $this->redirect_to;
                                     <div class="col-sm-8">
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="total_pax" name="total_pax" value="" required>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="control-label" for="datetime">Datetime <span class="text-danger">*</span></label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="input-group">
-                                            <input id="ctrl-datetime" class="form-control datepicker  datepicker" required="" value="<?php echo $this->set_field_value('datetime', date_now()); ?>" type="datetime" name="datetime" placeholder="Enter Datetime" data-enable-time="true" data-min-date="" data-max-date="" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" />
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"><i class="icon-calendar"></i></span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -200,48 +155,7 @@ $redirect_to = $this->redirect_to;
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="">
-                                            <input id="ctrl-assign_agent_phone" value="<?php echo $this->set_field_value('assign_agent_phone', ""); ?>" type="text" placeholder="Enter Assign Agent Phone" name="assign_agent_phone" class="form-control " />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="control-label" for="remark">Remark </label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="">
-                                            <textarea placeholder="Enter Remark" id="ctrl-remark" rows="5" name="remark" class=" form-control"><?php echo $this->set_field_value('remark', ""); ?></textarea>
-                                            <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="control-label" for="handled">Handled </label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="">
-                                            <?php
-                                            $handled_options = Menu::$handled;
-                                            if (!empty($handled_options)) {
-                                                foreach ($handled_options as $option) {
-                                                    $value = $option['value'];
-                                                    $label = $option['label'];
-                                                    //check if current option is checked option
-                                                    $checked = $this->set_field_checked('handled', $value, "false");
-                                            ?>
-                                                    <label class="custom-control custom-radio custom-control-inline">
-                                                        <input id="ctrl-handled" class="custom-control-input" <?php echo $checked ?> value="<?php echo $value ?>" type="radio" name="handled" />
-                                                        <span class="custom-control-label"><?php echo $label ?></span>
-                                                    </label>
-                                            <?php
-                                                }
-                                            }
-                                            ?>
+                                            <input id="ctrl-assign_agent_phone" value="<?php echo $this->set_field_value('assign_agent_phone', $_SESSION[APP_ID . 'user_data']['phone_number']); ?>" type="text" placeholder="Enter Assign Agent Phone" name="assign_agent_phone" class="form-control " />
                                         </div>
                                     </div>
                                 </div>

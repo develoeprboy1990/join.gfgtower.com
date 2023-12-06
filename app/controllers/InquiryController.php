@@ -462,7 +462,7 @@ class InquiryController extends SecureController
 
 		//editable fields
 
-		$fields = $this->fields = array("id", "prospect_name", "prospect_phone", "select_location", "platform", "handled", "status", "total_amount");
+		$fields = $this->fields = array("id", "prospect_name", "prospect_phone","event_date","event_type","total_pax","select_location", "platform", "handled", "status", "total_amount");
 
 		if ($formdata) {
 
@@ -481,6 +481,12 @@ class InquiryController extends SecureController
 				'prospect_name' => 'sanitize_string',
 
 				'prospect_phone' => 'sanitize_string',
+
+				'event_date'        => 'sanitize_string',
+
+				'event_type'        => 'sanitize_string',
+
+				'total_pax'         => 'sanitize_string',
 
 				'select_location' => 'sanitize_string',
 

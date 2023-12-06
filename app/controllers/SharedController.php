@@ -59,6 +59,11 @@ class SharedController extends BaseController{
 	function getcount_totalinquiries(){
 		$db = $this->GetModel();
 		$sqltext = "SELECT COUNT(*) AS num FROM inquiry";
+		$allowed_roles = array('administrator');
+		if (!in_array(strtolower(USER_ROLE), $allowed_roles)) {
+			 $sqltext .= " WHERE inquiry.assign_agent_name= '" . get_active_user('agent_name') . "'";
+		 }
+
 		$queryparams = null;
 		$val = $db->rawQueryValue($sqltext, $queryparams);
 		
@@ -75,6 +80,10 @@ class SharedController extends BaseController{
 	function getcount_handled(){
 		$db = $this->GetModel();
 		$sqltext = "SELECT COUNT(*) AS num FROM inquiry where handled = 'true'";
+		$allowed_roles = array('administrator');
+		 if (!in_array(strtolower(USER_ROLE), $allowed_roles)) {
+			 $sqltext .= " AND inquiry.assign_agent_name= '" . get_active_user('agent_name') . "'";
+		 }
 		$queryparams = null;
 		$val = $db->rawQueryValue($sqltext, $queryparams);
 		
@@ -91,6 +100,11 @@ class SharedController extends BaseController{
 	function getcount_pending(){
 		$db = $this->GetModel();
 		$sqltext = "SELECT COUNT(*) AS num FROM inquiry where handled != 'true'";
+		$allowed_roles = array('administrator');
+ 
+		 if (!in_array(strtolower(USER_ROLE), $allowed_roles)) {
+			 $sqltext .= " AND inquiry.assign_agent_name= '" . get_active_user('agent_name') . "'";
+		 }
 		$queryparams = null;
 		$val = $db->rawQueryValue($sqltext, $queryparams);
 		

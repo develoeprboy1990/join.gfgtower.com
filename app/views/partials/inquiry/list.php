@@ -182,10 +182,7 @@ $show_pagination = $this->show_pagination;
                                             <th class="td-total_pax"> Total Pax</th>
                                             <th class="td-event_type"> Office Type</th>
                                             <th class="td-assign_agent_name"> Assign Agent</th>
-                                            <th class="td-status"> Status</th>
-                                            <th class="td-total_amount"> Total Amount</th>
                                             <th class="td-platform">Platform</th>
-                                            <th class="td-handled"> Handled</th>
                                         </tr>
                                     </thead>
                                     <?php
@@ -229,10 +226,8 @@ $show_pagination = $this->show_pagination;
                                                     <td class="td-total_pax"> <?php echo $data['total_pax']; ?></td>
                                                     <td class="td-event_type"> <?php echo $data['event_type']; ?></td>
                                                     <td class="td-assign_agent_name"> <?php echo $data['assign_agent_name']; ?></td>
-                                                    <td class="td-status"> <?php echo $data['status']; ?></td>
-                                                    <td class="td-total_amount"> <?php echo $data['total_amount']; ?></td>
                                                     <td class="td-platform"> <?php echo $data['platform']; ?></td>
-                                                    <td class="td-handled"><?php Html::check_button($data['handled'], "true") ?></td>
+                                                    
                                                 </tr>
                                             <?php
                                             }

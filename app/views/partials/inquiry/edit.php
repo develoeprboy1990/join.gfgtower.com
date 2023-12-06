@@ -37,7 +37,7 @@ $redirect_to = $this->redirect_to;
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="prospect_name">Prospect Name <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="prospect_name">Your Name <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
@@ -49,7 +49,7 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="prospect_phone">Prospect Phone <span class="text-danger">*</span></label>
+                                                <label class="control-label" for="prospect_phone">Contact Number <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
@@ -58,6 +58,57 @@ $redirect_to = $this->redirect_to;
                                                 </div>
                                             </div>
                                         </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="control-label" for="prospect_phone">Total Pax <span class="text-danger">*</span></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="">
+                                                    <input id="ctrl-prospect_phone"  value="<?php  echo $data['total_pax']; ?>" type="text" placeholder="Enter Total Pax"  required="" name="total_pax"  class="form-control " />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="event_date">Move In Date<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <input id="ctrl-datetime" class="form-control datepicker" required=""  value="<?php echo $this->set_field_value('datetime', $data['event_date']); ?>" type="date" name="event_date" placeholder="ove In Date" data-enable-time="true" data-min-date="" data-max-date="" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="icon-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="assign_agent_name">Office Type<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="">
+                                            <select required="" class="custom-select" aria-label="Default select example" name="event_type" id="event_type">
+                                                <?php $field_value = $data['event_type']; ?>
+                                                <option <?php echo ('Private Office' == $field_value ? 'selected' : null) ?> value="Private Office">Private Office</option>
+                                                <option <?php echo ('Virtual Office' == $field_value ? 'selected' : null) ?> value="Virtual Office">Virtual Office</option>
+                                                <option <?php echo ('Other' == $field_value ? 'selected' : null) ?> value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                                            
                                         <div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -89,7 +140,7 @@ $redirect_to = $this->redirect_to;
                                             </div>
                                         </div>
 
-                                        <div class="form-group ">
+                                        <!--<div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <label class="control-label" for="platform">Status </label>
@@ -109,14 +160,14 @@ $redirect_to = $this->redirect_to;
                                             </div>
                                         </div>
 
-                                        <div class="form-group ">
+                                         <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="prospect_phone">Total Amount<span class="text-danger">*</span></label>
+                                                <label class="control-label" for="prospect_phone">Total Amount</label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-total_amount"  value="<?php  echo $data['total_amount']; ?>" type="text" placeholder="Enter Total Amount"  required="" name="total_amount"  class="form-control " />
+                                                    <input id="ctrl-total_amount"  value="<?php  echo $data['total_amount']; ?>" type="text" placeholder="Enter Total Amount" name="total_amount"  class="form-control " />
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,7 +182,6 @@ $redirect_to = $this->redirect_to;
                                                 <div class="col-sm-8">
                                                     <div class="">
                                                         <textarea placeholder="Enter Remark" id="ctrl-remark"  rows="5" name="remark" class=" form-control"><?php  echo $data['remark']; ?></textarea>
-                                                        <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -150,7 +200,6 @@ $redirect_to = $this->redirect_to;
                                                         foreach($handled_options as $option){
                                                         $value = $option['value'];
                                                         $label = $option['label'];
-                                                        //check if value is among checked options
                                                         $checked = $this->check_form_field_checked($field_value, $value);
                                                         ?>
                                                         <label class="custom-control custom-radio custom-control-inline">
@@ -164,7 +213,7 @@ $redirect_to = $this->redirect_to;
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="form-ajax-status"></div>
                                         <div class="form-group text-center">

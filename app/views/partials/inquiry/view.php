@@ -123,25 +123,6 @@ $show_export_btn = $this->show_export_btn;
                                         <th class="title"> Assign Agent Phone: </th>
                                         <td class="value"> <?php echo $data['assign_agent_phone']; ?></td>
                                     </tr> 
-                                    <tr  class="td-handled">
-                                        <th class="title"> Handled: </th>
-                                        <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $handled); ?>' 
-                                                data-value="<?php echo $data['handled']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("inquiry/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="handled" 
-                                                data-title="Enter Handled" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="radiolist" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" <?php } ?>>
-                                                <?php echo $data['handled']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
                                 </tbody>
                                 <!-- Table Body End -->
                             </table>
